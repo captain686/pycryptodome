@@ -1,9 +1,7 @@
 name: Wheels
 
 on:
-  push:
-    tags:
-    - '*'
+  workflow_dispatch:
 
 jobs:
   build_source:
