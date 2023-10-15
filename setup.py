@@ -37,6 +37,8 @@ import sys
 import shutil
 import struct
 
+sys.path.append(os.getcwd())
+
 from compiler_opt import set_compiler_options
 
 
@@ -526,6 +528,7 @@ setup(
         'Programming Language :: Python :: 3.9',
         'Programming Language :: Python :: 3.10',
         'Programming Language :: Python :: 3.11',
+        'Programming Language :: Python :: 3.12',
     ],
     license="BSD, Public Domain",
     packages=packages,

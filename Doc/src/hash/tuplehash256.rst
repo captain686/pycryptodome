@@ -35,6 +35,16 @@ This is an example showing how to generate a TupleHash256 for the 3 bytes string
     >>> print(hd.hexdigest())
     b101225b7e5f1f086fc6d0be01abfa1e
 
+Multiple byte strings can be submitted.
+Each argument is a separate element in the tuple::
+
+    >>> from Crypto.Hash import TupleHash256
+    >>>
+    >>> hd = TupleHash128.new(digest_bytes=16)
+    >>> hd.update(b'deposit', b'100', b'joe')
+    >>> print(hd.hexdigest())
+    b101225b7e5f1f086fc6d0be01abfa1e
+
 Any or even all the byte strings in the sequence can be empty.
 An empty byte string is significant: calling ``update(b'')`` will still contribute to and modify the final digest.
 
