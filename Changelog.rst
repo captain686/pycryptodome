@@ -1,6 +1,40 @@
 Changelog
 =========
 
+Under development
+++++++++++++++++++++++++++
+* By setting the PYCRYPTODOME_DISABLE_GMP environment variable,
+  the GMP library will not be used even if detected.
+
+3.20.0 (9 January 2024)
+++++++++++++++++++++++++++
+
+New features
+---------------
+* Added support for TurboSHAKE128 and TurboSHAKE256.
+* Added method ``Crypto.Hash.new()`` to generate a hash
+  object given a hash name.
+* Added support for AES-GCM encryption of PBES2 and PKCS#8
+  containers.
+* Added support for SHA-2 and SHA-3 algorithms in PBKDF2
+  when creating PBES2 and PKCS#8 containers.
+* Export of RSA keys accepts the ``prot_params`` dictionary
+  as parameter to control the number of iterations for PBKDF2
+  and scrypt.
+* C unit tests also run on non-x86 architectures.
+
+Resolved issues
+---------------
+* GH#787: Fixed autodetect logic for GCC 14 in combination with LTO.
+
+3.19.1 (28 December 2023)
+++++++++++++++++++++++++++
+
+Resolved issues
+---------------
+* Fixed a side-channel leakage with OAEP decryption that could be
+  exploited to carry out a Manger attack (CVE-2023-52323). Thanks to Hubert Kario.
+
 3.19.0 (16 September 2023)
 ++++++++++++++++++++++++++
 

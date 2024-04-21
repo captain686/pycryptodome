@@ -1,3 +1,5 @@
+.. _rsa_pss:
+
 PKCS#1 PSS (RSA)
 ================
 
@@ -12,24 +14,23 @@ The following example shows how the sender can use its own *private* key
     >>> from Crypto.Signature import pss
     >>> from Crypto.Hash import SHA256
     >>> from Crypto.PublicKey import RSA
-    >>> from Crypto import Random
     >>>
-    >>> message = 'To be signed'
-    >>> key = RSA.import_key(open('privkey.der').read())
+    >>> message = b'To be signed'
+    >>> key = RSA.import_key(open('privkey.der', 'rb').read())
     >>> h = SHA256.new(message)
     >>> signature = pss.new(key).sign(h)
 
 At the receiver side, the matching *public* RSA key is used to verify
 authenticity of the incoming message::
 
-    >>> key = RSA.import_key(open('pubkey.der').read())
+    >>> key = RSA.import_key(open('pubkey.der', 'rb').read())
     >>> h = SHA256.new(message)
     >>> verifier = pss.new(key)
     >>> try:
     >>>     verifier.verify(h, signature)
-    >>>     print "The signature is authentic."
-    >>> except (ValueError, TypeError):
-    >>>     print "The signature is not authentic."
+    >>>     print("The signature is authentic.")
+    >>> except (ValueError):
+    >>>     print("The signature is not authentic.")
 
 .. __: https://tools.ietf.org/html/rfc8017#section-8.1
 
